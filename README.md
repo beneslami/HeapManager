@@ -23,7 +23,7 @@ but page allocation and deallocation between glibC and kernel memory manager (MM
 because sbrk/mmap system calls are expensive, so that glibC **caches** the VM page allocated by the kernel MMU and allocates 
 small chunks from it to the process.
 
-![diagram](phase%201/page caching.png)
+![diagram](phase%201/pageCaching.png)
 
 ##phase 2
 **Page Family Registration** means the user space application relying on Linux Memory Manager (LMM) during initialization,
