@@ -32,3 +32,30 @@ The user space application should inform the LMM the name and the amounts of byt
 page families form a linked list.
 ![diagram](phase%202/pageFamily.png)
 
+##phase 3
+There are two types of blocks VM page context: **meta block** and **data block**. These blocks corresponds to user space application 
+memory requests.
+
+![diagram](phase%203/metablock.png)
+
+Meta block is responsible to store meta information of its data block as well as maintain chains of free and allocated blocks.
+Application do not know anything about these meta blocks.
+
+##phase 4
+Once the application requests for a VM page, a big data block as well as its meta block is created. Since the size of meta block
+is 28 bytes, therefore, the size of the first big data block will be 4096 - 28 = 4068 bytes.
+
+![diagram](phase%204/bigdatablock.png)
+
+Once the application requests for a memory using xmalloc(1, foo_t), the updated snapshot of the heap memory will be as below:
+
+![diagram](phase%204/bigdatablock2.png)
+
+In above picture, the xmalloc API **splits** the VM page into data blocks. On the other side, xfree API **merges** consecutive 
+data blocks.
+
+![diagram](phase%204/bigdatablock3.png)
+
+Another scenario that is likely to happen is depicted as below diagram:
+
+![diagram](phase%204/merging.png)
