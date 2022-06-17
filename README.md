@@ -26,4 +26,9 @@ small chunks from it to the process.
 ![diagram](phase%201/page caching.png)
 
 ##phase 2
+**Page Family Registration** means the user space application relying on Linux Memory Manager (LMM) during initialization,
+tell the LMM the details of the structures application is using.
+The user space application should inform the LMM the name and the amounts of bytes for each and every data structures using an API.
+page families form a linked list.
+![diagram](phase%202/pageFamily.png)
 
