@@ -59,3 +59,29 @@ data blocks.
 Another scenario that is likely to happen is depicted as below diagram:
 
 ![diagram](phase%204/merging.png)
+
+##phase 5
+In this step, we are discussing VM page management. Normally, VM pages of an application forms a a doubly linked list.
+
+![diagram](phase%205/vm.png)
+
+##phase 6
+In this phase, we discuss how the linux memory manager assign VM page to a request from the application. Suppose the snapshot
+of heap memory for the application is like below picture.
+
+![diagram](phase%206/block.png)
+
+At a certain time, the application asks for a VM page. The problem statement here is that how the Linux Memory Manager (LMM)
+choose a free space to allocate VM for the requested demand. Here, there are three famous algorithm to allocate memory to a 
+request: 
+1. Worst Fit: chooses the largest free space to allocate the request.
+2. Best Fit: chooses the smallest free space.
+3. First Fit: chooses the first free space during searching phase.
+
+In this project, we used worst fit technique to allocate memory to the request of the application. The important question 
+arises here is that how to find the biggest free data block across all Data VM pages of a given page family? The answer is 
+each Page Family must maintain a max-priority queue of free data blocks. Note that, the time complexity of Max-Priority queue
+always will be O(1) whereas in Min-Priority and best fit queue, the time complexity will be O(n). This time complexity can be improved to
+O(log(n)) if the data structure forms a max-heap.
+
+![diagram](phase%206/pq.png)
