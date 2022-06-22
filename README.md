@@ -3,6 +3,9 @@
 This project is about managing Heap memory. it consists of 10 phases. Each phase discribe some concepts.
 
 ##phase 1
+Heap Memory of a process is the continuous part of Virtual Address space of the process from which a process claims and 
+reclaims Memory during runtime (Dynamic Memory allocation). Unlike Stack memory which is reclaimed back upon procedure return automatically,
+it is the programmer's responsibility to free the dynamic memory after usage.
 Size of Virtual Memory (VM) page is constant (8192B on most systems). We usually use malloc/calloc to allocate 
 dynamic memory in our program. In fact, malloc/free are linux library functions that uses sbrk/brk system calls
 to dynamically manage memory. Similarly, another pair of system call called mmap/munmap which are a wrapper for
